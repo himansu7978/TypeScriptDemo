@@ -93,5 +93,6 @@ test.only('Verify CheckBox',async ({page})=>{
           {
                await checkboxes[i].check()
                await expect(checkboxes[i]).toBeChecked()
-          }
+      
+          }         
 })

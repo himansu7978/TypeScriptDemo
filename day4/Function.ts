@@ -19,8 +19,8 @@ function add(x:number,y:number):number
     return x+y;
 }
 console.log(add(20,7)) // one Way
-let res:number=add(10,20)// 2nd Way 
-console.log(res)
+let res1:number=add(10,20)// 2nd Way 
+console.log(res1)
 
 // Example 3 Named Function With rest  Multiple Parameter 
 

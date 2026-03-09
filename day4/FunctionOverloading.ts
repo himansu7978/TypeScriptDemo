@@ -36,11 +36,11 @@ console.log(getInfo("Himansu"))
 
 // Example 2 Different number of Parameter 
 
-function add(a:number , b:number): number;
-function add(a:number , b:number,c:number): number;
+function addition(a:number , b:number): number;
+function addition(a:number , b:number,c:number): number;
 
 
-function add(a:number,b:number,c?:number):number
+function addition(a:number,b:number,c?:number):number
 {
     if (c!==undefined){
 
@@ -48,9 +48,10 @@ function add(a:number,b:number,c?:number):number
     }
    return a+b;
 }
-console.log("Different number of Parameter ")
- console.log(add(10,20))
- console.log(add(10,20,30))
+
+ console.log("Different number of Parameter ")
+ console.log(addition(10,20))
+ console.log(addition(10,20,30))
 
 
  //Example 3 Different return  Types

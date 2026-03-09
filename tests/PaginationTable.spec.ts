@@ -1,54 +1,52 @@
 //Pagination Web Table handel 
 
-import {test,expect, Locator} from '@playwright/test'
+import { test, expect, Locator } from '@playwright/test'
 
-test('Verify Pagination Table only printing ', async ({page})=>{
-
-
-
-   await page.goto('https://testautomationpractice.blogspot.com/')
-
-        const rows= await page.locator("table[id=productTable] tbody tr").all();
-
-        for(let row of rows){
-
-            console.log(await row.innerText())
-            
-        }
+test('Verify Pagination Table only printing ', async ({ page }) => {
 
 
-            
+
+    await page.goto('https://testautomationpractice.blogspot.com/')
+
+    const rows = await page.locator("table[id=productTable] tbody tr").all();
+
+    for (let row of rows) {
+
+        console.log(await row.innerText())
+
+    }
 })
 
-test('Pagination 2 usnig for f loop',async ({page})=>{
 
-    let pages:boolean=true;
+test('Pagination 2 usnig for of loop', async ({ page }) => {
+
+    let pages: boolean = true;
     await page.goto('https://datatables.net/examples/basic_init/alt_pagination.html');
 
-    while(pages){
+    while (pages) {
 
-         const rows= await page.locator("#example tbody tr").all();
+        const rows = await page.locator("#example tbody tr").all();
 
-        for(let row of rows){
+        for (let row of rows) {
 
             console.log(await row.innerText())
-        
-        } 
+
+        }
         await page.waitForTimeout(3000);
-        
-        const nextPage= page.locator("button[aria-label='Next']");
-        const isDisabled=await nextPage.getAttribute('class')
 
-    if(isDisabled?.includes("disabled")){
+        const nextPage = page.locator("button[aria-label='Next']");
+        const isDisabled = await nextPage.getAttribute('class')
 
-        pages=false     
+        if (isDisabled?.includes("disabled")) {
 
-    }else{
+            pages = false
 
-       await nextPage.click();
+        } else {
+
+            await nextPage.click();
+        }
+
     }
-   
-  }
 
 })
 
@@ -108,44 +106,44 @@ test('Pagination using for loop', async ({ page }) => {
     }
 });
 
-test('Pagination Filter The rows And Check The Row Count', async ({page})=>{
+test('Pagination Filter The rows And Check The Row Count', async ({ page }) => {
 
     await page.goto('https://datatables.net/examples/basic_init/alt_pagination.html');
 
-    const dropdown:Locator=page.locator('#dt-length-0');
-    await dropdown.selectOption({label:'25'})
+    const dropdown: Locator = page.locator('#dt-length-0');
+    await dropdown.selectOption({ label: '25' })
 
-    const rows:Locator[]=await page.locator("table[id='example'] tbody tr").all()
+    const rows: Locator[] = await page.locator("table[id='example'] tbody tr").all()
     expect(rows.length).toBe(25);
 
 
 })
 
-test.only('Search a sepecific data from the table ', async ({page})=>{
+test.only('Search a sepecific data from the table ', async ({ page }) => {
 
-        
+
     await page.goto('https://datatables.net/examples/basic_init/alt_pagination.html');
     await page.locator('#dt-search-0').fill('Dai Rios');
     await page.waitForTimeout(5000)
-     const rows:Locator[]=await page.locator("table[id='example'] tbody tr").all()
+    const rows: Locator[] = await page.locator("table[id='example'] tbody tr").all()
 
-     if(rows.length>=1){
+    if (rows.length >= 1) {
 
-        for(let row of rows){
+        for (let row of rows) {
 
-            const text=await row.innerText()
-            if(text.includes('Dai Rios')){
+            const text = await row.innerText()
+            if (text.includes('Dai Rios')) {
 
                 console.log('Data Match --Found')
                 break;
             }
-            else{
+            else {
                 console.log("Data Does Not Exist")
             }
         }
 
 
-     }
+    }
 
 })
 

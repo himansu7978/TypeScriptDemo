@@ -7,8 +7,9 @@ export class HomePage {
     readonly lnkContact: Locator;
     readonly lnkAboutUs: Locator;
     readonly lnkCart: Locator;
-
+ 
     constructor(page: Page) {
+         
         this.page = page;
         this.lnkHome = page.getByRole('link', { name: 'Home' });
         this.lnkContact = page.getByRole('link', { name: 'Contact' });
@@ -22,12 +23,7 @@ export class HomePage {
         await expect(this.lnkContact).toBeVisible();
         await expect(this.lnkAboutUs).toBeVisible();
         await expect(this.lnkCart).toBeVisible();
-
+        
     }
-
-   
-
-
-
 
 }

@@ -14,6 +14,7 @@ export class HomePage {
         this.lnkHome = page.getByRole('link', { name: 'Home' });
         this.lnkContact = page.getByRole('link', { name: 'Contact' });
         this.lnkAboutUs = page.getByRole('link', { name: 'About us' });
+        
         this.lnkCart = page.getByRole('link', { name: 'Cart' });
     }
 
